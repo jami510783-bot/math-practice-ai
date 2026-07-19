@@ -61,8 +61,7 @@ Get a free Gemini API key at [aistudio.google.com/app/apikey](https://aistudio.g
 
 ## Challenges & Learnings
 
-*[Fill in once you've built it — e.g. prompt design for reliable JSON output,
-handling model responses that don't parse cleanly, etc.]*
+The biggest challenge wasn't the AI logic itself, but keeping up with how fast the Gemini API changes. The model I originally built with was fully shut down mid-project, and even the next one I tried turned out to be restricted for new accounts. I eventually switched to Google's auto-updating "latest" alias to avoid this happening again. I also had to migrate from an older Google AI library to a newer one with a different way of calling the API. On the deployment side, I ran into a tricky issue where a config file got saved in a format Streamlit couldn't read, and I learned Git and GitHub from scratch to get the project online.
 
 ## Future Improvements
 
