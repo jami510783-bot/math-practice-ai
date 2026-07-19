@@ -37,7 +37,7 @@ answer, and explaining the correct steps in plain language.
 
 ## Live Demo
 
-🔗 *[Add your deployed Streamlit Cloud URL here once deployed]*
+🔗(https://math-practice-ai-fw7y42ztczxqxqevj6ybye.streamlit.app)
 
 ## How to Run Locally
 
@@ -57,7 +57,7 @@ Get a free Gemini API key at [aistudio.google.com/app/apikey](https://aistudio.g
 
 ## Screenshots
 
-*[Add 1-2 screenshots here once you've run the app]*
+![App screenshot](screenshots/Screenshot 2026-07-19 165844.png)
 
 ## Challenges & Learnings
 
