@@ -12,10 +12,6 @@ import re
 import streamlit as st
 from google import genai
 
-# ---------------------------------------------------------------------------
-# Configuration
-# ---------------------------------------------------------------------------
-
 st.set_page_config(page_title="AI Math Practice Generator", page_icon="🧮")
 
 API_KEY = st.secrets.get("GEMINI_API_KEY", "")
@@ -82,6 +78,12 @@ if "answer" not in st.session_state:
     st.session_state.answer = None
 if "result" not in st.session_state:
     st.session_state.result = None
+if "score" not in st.session_state:
+    st.session_state.score = 0
+if "total" not in st.session_state:
+    st.session_state.total = 0
+if "already_graded" not in st.session_state:
+    st.session_state.already_graded = False
 
 
 st.title("🧮 AI Math Practice Generator")
@@ -96,6 +98,8 @@ if not API_KEY:
         "locally, or to your app's Secrets in Streamlit Cloud when deployed."
     )
 
+st.metric("Score this session", f"{st.session_state.score} / {st.session_state.total}")
+
 col1, col2 = st.columns(2)
 with col1:
     topic = st.selectbox("Topic", TOPICS)
@@ -107,6 +111,7 @@ if st.button("Generate New Problem", type="primary", disabled=not API_KEY):
         try:
             st.session_state.problem = generate_problem(topic, difficulty)
             st.session_state.result = None
+            st.session_state.already_graded = False
         except Exception as e:
             st.error(f"Couldn't generate a problem: {e}")
 
@@ -124,6 +129,11 @@ if st.session_state.problem:
                     st.session_state.problem["answer"],
                     student_answer,
                 )
+                if not st.session_state.already_graded:
+                    st.session_state.total += 1
+                    if st.session_state.result["correct"]:
+                        st.session_state.score += 1
+                    st.session_state.already_graded = True
             except Exception as e:
                 st.error(f"Couldn't grade the answer: {e}")
 
