@@ -1,5 +1,6 @@
 # AI Math Practice Generator
 
+Built to help students I tutor practice math independently between sessions, with instant AI feedback instead of waiting for the next lesson.
 An AI-powered app that generates math practice problems, lets students submit
 answers, and gives instant AI grading with a step-by-step explanation —
 built for the ACT AI Program Final Course Project.
@@ -32,7 +33,7 @@ answer, and explaining the correct steps in plain language.
 ## Tech Stack
 
 - **Frontend + backend:** [Streamlit](https://streamlit.io) (Python)
-- **AI:** Google Gemini API (`gemini-1.5-flash`)
+- **AI:** Google Gemini API (`gemini-flash-latest`)
 - **Deployment:** Streamlit Community Cloud
 
 ## Live Demo
