@@ -26,7 +26,7 @@ TOPICS = [
 
 DIFFICULTIES = ["Easy", "Medium", "Hard"]
 
-MODEL_NAME = "gemini-3.0-flash"
+MODEL_NAME = "gemini-2.5-flash"
 
 
 def get_client():
