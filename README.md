@@ -95,8 +95,21 @@ Get a free Gemini API key at [aistudio.google.com/app/apikey](https://aistudio.g
 ## Screenshots
 
 
+## Screenshots
+
+
 
 ![App screenshot](screenshots/screenshot-1.png)
+
+
+
+
+![Correct answer](screenshots/screenshot-2.png)
+
+
+
+
+![Incorrect answer](screenshots/screenshot-3.png)
 
 
 
