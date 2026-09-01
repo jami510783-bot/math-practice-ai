@@ -29,6 +29,42 @@ answer, and explaining the correct steps in plain language.
 - Submit your answer and get instant grading
 - If incorrect, get a clear step-by-step explanation of the correct solution
 - If correct, get a short confirmation of why it's right
+- Session score tracker (correct answers out of total attempted)
+
+## The AI Feature
+
+The app uses Google's Gemini API (`gemini-flash-latest`) for two things: generating a fresh practice problem, and grading the student's answer with an explanation.
+
+**1. Problem generation prompt:**
+```
+You are a math teacher creating a practice problem.
+
+Topic: {topic}
+Difficulty: {difficulty}
+
+Return ONLY a JSON object (no markdown, no extra text) with exactly these keys:
+- "problem": a single, well-posed practice question (string)
+- "answer": the correct final answer, in simplest form (string)
+
+Example format:
+{"problem": "Solve for x: 2x + 3 = 11", "answer": "x = 4"}
+```
+
+**2. Grading prompt:**
+```
+You are a supportive math tutor grading a student's work.
+
+Problem: {problem}
+Correct answer: {correct_answer}
+Student's answer: {student_answer}
+
+Return ONLY a JSON object (no markdown, no extra text) with exactly these keys:
+- "correct": true or false (boolean) — whether the student's answer is mathematically correct
+- "feedback": a short, encouraging explanation. If correct, briefly confirm why.
+  If incorrect, explain the correct step-by-step solution clearly, in plain language.
+```
+
+The topic, difficulty, and student's answer are inserted into these prompts at runtime, and the app parses the AI's JSON response to display the problem, correctness, and feedback.
 
 ## Tech Stack
 
@@ -38,12 +74,12 @@ answer, and explaining the correct steps in plain language.
 
 ## Live Demo
 
-🔗(https://math-practice-ai-fw7y42ztczxqxqevj6ybye.streamlit.app)
+🔗 [Try it live](https://math-practice-ai-fw7y42ztczxqxqevj6ybye.streamlit.app)
 
 ## How to Run Locally
 
 ```bash
-git clone https://github.com/<your-username>/math-practice-ai.git
+git clone https://github.com/jami510783-bot/math-practice-ai.git
 cd math-practice-ai
 pip install -r requirements.txt
 
@@ -58,7 +94,11 @@ Get a free Gemini API key at [aistudio.google.com/app/apikey](https://aistudio.g
 
 ## Screenshots
 
-![App screenshot](screenshots/Screenshot 2026-07-19 165844.png)
+
+
+![App screenshot](screenshots/screenshot-1.png)
+
+
 
 ## Challenges & Learnings
 
@@ -66,7 +106,7 @@ The biggest challenge wasn't the AI logic itself, but keeping up with how fast t
 
 ## Future Improvements
 
-- Track a student's progress/history across sessions
+- Track a student's progress/history across sessions permanently
 - Support more topics (fractional differential equations, numerical methods)
 - Adjustable difficulty based on performance
 - Multi-step problems with partial credit
